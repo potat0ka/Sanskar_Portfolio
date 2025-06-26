@@ -127,6 +127,7 @@ function initSmoothScrolling() {
 function initGlobeAnimation() {
     const globe = document.querySelector('.animated-globe');
     const nasaGlobe = document.querySelector('.nasa-earth-globe');
+    const webglEarthContainer = document.getElementById('earth');
     
     // Handle SVG globe if present
     if (globe) {
@@ -186,6 +187,59 @@ function initGlobeAnimation() {
             console.warn('NASA Earth globe failed to load, falling back to SVG');
             // Could implement fallback to SVG here if needed
         });
+    }
+    
+    // Initialize WebGL Earth globe if container exists
+    if (webglEarthContainer && typeof WE !== 'undefined') {
+        try {
+            // Initialize WebGL Earth
+            const earth = new WE.map('earth', {
+                zoom: 3,
+                center: [20, 0],
+                sky: true,
+                atmosphere: true
+            });
+            
+            // Add satellite imagery layer
+            WE.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                attribution: '© Esri, NASA, USGS'
+            }).addTo(earth);
+            
+            // Add subtle rotation animation
+            let rotation = 0;
+            const rotateEarth = () => {
+                rotation += 0.1;
+                earth.setCenter([20, rotation % 360]);
+                requestAnimationFrame(rotateEarth);
+            };
+            
+            // Start rotation after a short delay
+            setTimeout(() => {
+                rotateEarth();
+            }, 1000);
+            
+            // Add hover effects to container
+            const globeContainer = webglEarthContainer.closest('.globe-container');
+            if (globeContainer) {
+                globeContainer.addEventListener('mouseenter', function() {
+                    webglEarthContainer.style.animationPlayState = 'paused';
+                    webglEarthContainer.style.transform = 'scale(1.02)';
+                    webglEarthContainer.style.filter = 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5))';
+                });
+                
+                globeContainer.addEventListener('mouseleave', function() {
+                    webglEarthContainer.style.animationPlayState = 'running';
+                    webglEarthContainer.style.transform = '';
+                    webglEarthContainer.style.filter = 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4))';
+                });
+            }
+            
+            console.log('WebGL Earth globe initialized successfully');
+            
+        } catch (error) {
+            console.warn('WebGL Earth failed to initialize:', error);
+            // Fallback could be implemented here
+        }
     }
 }
 

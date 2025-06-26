@@ -90,6 +90,11 @@
         height: 300px;
     }
     
+    .webgl-earth-globe {
+        width: 300px;
+        height: 300px;
+    }
+    
     .company-info {
         text-align: center;
     }
@@ -163,6 +168,11 @@
     }
     
     .nasa-earth-globe {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .webgl-earth-globe {
         width: 250px;
         height: 250px;
     }
@@ -315,6 +325,11 @@
         height: 200px;
     }
     
+    .webgl-earth-globe {
+        width: 200px;
+        height: 200px;
+    }
+    
     .section-title {
         font-size: 1.5rem;
     }
@@ -404,6 +419,11 @@
         height: 180px;
     }
     
+    .webgl-earth-globe {
+        width: 180px;
+        height: 180px;
+    }
+    
     .section-title {
         font-size: 1.3rem;
     }
@@ -459,6 +479,11 @@
     }
     
     .nasa-earth-globe {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .webgl-earth-globe {
         width: 150px;
         height: 150px;
     }
