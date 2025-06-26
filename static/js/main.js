@@ -195,7 +195,7 @@ function initGlobeAnimation() {
             // Initialize WebGL Earth
             const earth = new WE.map('earth', {
                 zoom: 3,
-                center: [20, 0],
+                center: [27.7172, 85.3240], // Start centered on Nepal
                 sky: true,
                 atmosphere: true
             });
@@ -205,18 +205,155 @@ function initGlobeAnimation() {
                 attribution: '© Esri, NASA, USGS'
             }).addTo(earth);
             
-            // Add subtle rotation animation
-            let rotation = 0;
+            // Store the earth instance globally for access from search functions
+            window.earthGlobe = earth;
+            
+            // Location search functionality
+            const searchInput = document.getElementById('locationSearch');
+            const searchBtn = document.getElementById('searchBtn');
+            const destinationTags = document.querySelectorAll('.destination-tag');
+            
+            // Predefined locations for quick access
+            const locations = {
+                'Nepal': [27.7172, 85.3240],
+                'Kathmandu': [27.7172, 85.3240],
+                'Pokhara': [28.2096, 83.9856],
+                'Everest': [27.9881, 86.9250],
+                'Chitwan': [27.5291, 84.3542],
+                'Lumbini': [27.4833, 83.2667],
+                'Annapurna': [28.5967, 83.8203],
+                'Tibet': [29.6474, 91.1175],
+                'Bhutan': [27.5142, 90.4336],
+                'India': [20.5937, 78.9629],
+                'Thailand': [15.8700, 100.9925],
+                'Myanmar': [21.9162, 95.9560],
+                'China': [35.8617, 104.1954]
+            };
+            
+            // Function to search and zoom to location
+            function searchLocation(query) {
+                const location = locations[query];
+                if (location) {
+                    earth.setCenter(location);
+                    earth.setZoom(8);
+                    
+                    // Add a marker for the location
+                    addLocationMarker(location, query);
+                    
+                    console.log(`Navigated to ${query}: ${location}`);
+                } else {
+                    // Try to geocode the location using a simple approach
+                    geocodeLocation(query);
+                }
+            }
+            
+            // Simple geocoding function (you could enhance this with a real geocoding service)
+            function geocodeLocation(query) {
+                console.log(`Searching for: ${query}`);
+                // For now, just show a message
+                alert(`Location "${query}" not found in predefined locations. Try: Nepal, Kathmandu, Pokhara, Everest, Chitwan, Lumbini`);
+            }
+            
+            // Add location marker
+            function addLocationMarker(coords, name) {
+                // Remove existing markers
+                const existingMarkers = document.querySelectorAll('.location-marker');
+                existingMarkers.forEach(marker => marker.remove());
+                
+                // Create new marker (simplified approach)
+                const marker = WE.marker(coords).addTo(earth);
+                console.log(`Added marker for ${name} at ${coords}`);
+            }
+            
+            // Search button event
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        searchLocation(query);
+                    }
+                });
+            }
+            
+            // Search input enter key
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        const query = this.value.trim();
+                        if (query) {
+                            searchLocation(query);
+                        }
+                    }
+                });
+            }
+            
+            // Destination tag clicks
+            destinationTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const location = this.getAttribute('data-location');
+                    searchLocation(location);
+                    if (searchInput) {
+                        searchInput.value = location;
+                    }
+                });
+            });
+            
+            // Globe controls
+            const zoomInBtn = document.getElementById('zoomIn');
+            const zoomOutBtn = document.getElementById('zoomOut');
+            const resetViewBtn = document.getElementById('resetView');
+            
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', function() {
+                    const currentZoom = earth.getZoom();
+                    earth.setZoom(Math.min(currentZoom + 1, 18));
+                });
+            }
+            
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', function() {
+                    const currentZoom = earth.getZoom();
+                    earth.setZoom(Math.max(currentZoom - 1, 1));
+                });
+            }
+            
+            if (resetViewBtn) {
+                resetViewBtn.addEventListener('click', function() {
+                    earth.setCenter([27.7172, 85.3240]); // Reset to Nepal
+                    earth.setZoom(3);
+                    if (searchInput) {
+                        searchInput.value = '';
+                    }
+                    // Remove markers
+                    const existingMarkers = document.querySelectorAll('.location-marker');
+                    existingMarkers.forEach(marker => marker.remove());
+                });
+            }
+            
+            // Auto-rotation (can be paused/resumed)
+            let rotationEnabled = true;
+            let rotation = 85.3240; // Start from Nepal longitude
+            
             const rotateEarth = () => {
-                rotation += 0.1;
-                earth.setCenter([20, rotation % 360]);
+                if (rotationEnabled) {
+                    rotation += 0.05;
+                    earth.setCenter([27.7172, rotation % 360]);
+                }
                 requestAnimationFrame(rotateEarth);
             };
             
-            // Start rotation after a short delay
+            // Start rotation after initial load
             setTimeout(() => {
                 rotateEarth();
-            }, 1000);
+            }, 2000);
+            
+            // Pause rotation on interaction
+            earth.on('click', function() {
+                rotationEnabled = false;
+                setTimeout(() => {
+                    rotationEnabled = true;
+                }, 5000); // Resume after 5 seconds
+            });
             
             // Add hover effects to container
             const globeContainer = webglEarthContainer.closest('.globe-container');
@@ -225,16 +362,20 @@ function initGlobeAnimation() {
                     webglEarthContainer.style.animationPlayState = 'paused';
                     webglEarthContainer.style.transform = 'scale(1.02)';
                     webglEarthContainer.style.filter = 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5))';
+                    rotationEnabled = false; // Pause rotation on hover
                 });
                 
                 globeContainer.addEventListener('mouseleave', function() {
                     webglEarthContainer.style.animationPlayState = 'running';
                     webglEarthContainer.style.transform = '';
                     webglEarthContainer.style.filter = 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4))';
+                    setTimeout(() => {
+                        rotationEnabled = true; // Resume rotation
+                    }, 1000);
                 });
             }
             
-            console.log('WebGL Earth globe initialized successfully');
+            console.log('WebGL Earth globe initialized successfully with search functionality');
             
         } catch (error) {
             console.warn('WebGL Earth failed to initialize:', error);

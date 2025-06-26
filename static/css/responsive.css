@@ -95,6 +95,29 @@
         height: 300px;
     }
     
+    .globe-search-box {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .globe-search-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .popular-destinations {
+        justify-content: center;
+    }
+    
+    .globe-controls {
+        flex-direction: row;
+        bottom: var(--spacing-md);
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+    }
+    
     .company-info {
         text-align: center;
     }

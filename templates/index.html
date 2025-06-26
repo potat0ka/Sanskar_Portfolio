@@ -33,8 +33,34 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-globe">
+                        <div class="globe-search-container">
+                            <div class="globe-search-box">
+                                <input type="text" id="locationSearch" placeholder="Search destinations..." class="form-control globe-search-input">
+                                <button type="button" id="searchBtn" class="btn btn-primary globe-search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="popular-destinations">
+                                <small class="text-muted">Popular: </small>
+                                <button class="destination-tag" data-location="Nepal">Nepal</button>
+                                <button class="destination-tag" data-location="Everest">Everest</button>
+                                <button class="destination-tag" data-location="Kathmandu">Kathmandu</button>
+                                <button class="destination-tag" data-location="Pokhara">Pokhara</button>
+                            </div>
+                        </div>
                         <div class="globe-container">
                             <div id="earth" class="webgl-earth-globe"></div>
+                        </div>
+                        <div class="globe-controls">
+                            <button class="globe-control-btn" id="zoomIn" title="Zoom In">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="globe-control-btn" id="zoomOut" title="Zoom Out">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button class="globe-control-btn" id="resetView" title="Reset View">
+                                <i class="fas fa-home"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
