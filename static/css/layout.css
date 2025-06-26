@@ -152,6 +152,10 @@ p {
     overflow: hidden;
 }
 
+.hero-section * {
+    color: var(--white) !important;
+}
+
 .hero-content {
     position: relative;
     z-index: 2;
@@ -175,7 +179,11 @@ p {
 }
 
 .company-info {
-    opacity: 0.8;
+    opacity: 0.9;
+}
+
+.company-info small {
+    color: rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Globe Container */
@@ -261,6 +269,7 @@ p {
     margin-bottom: var(--spacing-md);
     position: relative;
     display: inline-block;
+    color: var(--dark-color) !important;
 }
 
 .section-title::after {
@@ -278,6 +287,24 @@ p {
     font-size: var(--font-size-lg);
     color: var(--secondary-color);
     margin-bottom: var(--spacing-xl);
+}
+
+/* Ensure text visibility on colored backgrounds */
+.bg-primary .section-title,
+.cv-section .section-title,
+.cv-section h2,
+.cv-section h3,
+.cv-section h4,
+.cv-section h5,
+.cv-section h6 {
+    color: var(--white) !important;
+}
+
+.bg-primary .section-subtitle,
+.cv-section .section-subtitle,
+.cv-section p,
+.cv-section .lead {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Grid System Extensions */

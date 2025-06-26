@@ -502,6 +502,10 @@
     backdrop-filter: blur(10px);
 }
 
+.globe-search-box input {
+    color: var(--dark-color) !important;
+}
+
 .globe-search-input {
     border: none;
     background: transparent;
@@ -530,6 +534,10 @@
     align-items: center;
     gap: var(--spacing-sm);
     flex-wrap: wrap;
+}
+
+.popular-destinations small {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .destination-tag {
