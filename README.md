@@ -131,21 +131,6 @@ Place the CV PDF file at: `static/files/sanskar_shrestha_cv.pdf`
 
 ## 🌐 Deployment
 
-### Replit Deployment
-
-1. **Push to Replit**:
-   - Import repository to Replit
-   - Replit will automatically detect Django project
-
-2. **Configure run command**:
-   ```bash
-   python manage.py migrate && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:5000 portfolio_project.wsgi:application
-   ```
-
-3. **Set environment variables**:
-   - `SECRET_KEY`: Django secret key
-   - `DEBUG`: Set to `False` for production
-
 ### GitHub Deployment
 
 1. **Push to GitHub**:
@@ -169,12 +154,6 @@ The website uses a professional color palette defined in CSS custom properties:
 - Primary Color: `#FFCB82` (Warm golden)
 - Primary Text: `#381E05` (Dark brown)
 - Dark Gradient: Space-themed dark background
-
-### Globe Animation
-
-- **Speed**: 30-second rotation cycle (configurable in `main.js`)
-- **Fallback**: SVG animation when Three.js fails to load
-- **Responsive**: Scales from 500px (desktop) to 220px (mobile)
 
 ### Content Updates
 
@@ -204,15 +183,6 @@ Edit content in `portfolio/views.py`:
 - Proper heading hierarchy
 - Alt text for all images
 - Clean URL structure
-
-## 📞 Contact Information
-
-- **Travel Consultant**: Sanskar Shrestha
-- **Company**: Harvest Moon Travels & Tours (P.) LTD
-- **Phone**: +977-9700342200
-- **Location**: Thamel, Kathmandu, Nepal
-- **WhatsApp**: Available through website contact form
-- **Email**: sanskar@harvestmoon.com
 
 ## 🤝 Contributing
 
