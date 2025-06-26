@@ -1,0 +1,104 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient definitions for the globe -->
+    <radialGradient id="globeGradient" cx="40%" cy="30%">
+      <stop offset="0%" style="stop-color:#4FC3F7;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#29B6F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0277BD;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Gradient for continents -->
+    <radialGradient id="landGradient" cx="40%" cy="30%">
+      <stop offset="0%" style="stop-color:#81C784;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#66BB6A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#388E3C;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Shadow gradient -->
+    <radialGradient id="shadowGradient" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Highlight gradient -->
+    <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Globe shadow -->
+  <ellipse cx="200" cy="360" rx="80" ry="20" fill="url(#shadowGradient)" opacity="0.5" />
+  
+  <!-- Main globe -->
+  <circle cx="200" cy="200" r="180" fill="url(#globeGradient)" stroke="#0277BD" stroke-width="2" />
+  
+  <!-- Continents/Land masses -->
+  <!-- North America -->
+  <path d="M80,120 Q120,100 160,120 Q180,140 170,180 Q140,200 100,190 Q60,160 80,120 Z" fill="url(#landGradient)" opacity="0.9" />
+  
+  <!-- South America -->
+  <path d="M140,220 Q160,200 180,220 Q190,260 180,300 Q160,320 140,300 Q120,260 140,220 Z" fill="url(#landGradient)" opacity="0.9" />
+  
+  <!-- Europe/Africa -->
+  <path d="M220,100 Q260,80 300,100 Q320,140 310,180 Q290,220 250,210 Q210,170 220,100 Z" fill="url(#landGradient)" opacity="0.9" />
+  
+  <!-- Asia -->
+  <path d="M320,120 Q360,100 380,140 Q370,180 340,200 Q310,180 320,120 Z" fill="url(#landGradient)" opacity="0.9" />
+  
+  <!-- Australia -->
+  <path d="M280,260 Q320,250 340,280 Q330,300 300,290 Q270,280 280,260 Z" fill="url(#landGradient)" opacity="0.9" />
+  
+  <!-- Grid lines (latitude and longitude) -->
+  <g stroke="#FFFFFF" stroke-width="1" opacity="0.3" fill="none">
+    <!-- Longitude lines -->
+    <ellipse cx="200" cy="200" rx="180" ry="60" />
+    <ellipse cx="200" cy="200" rx="180" ry="120" />
+    <ellipse cx="200" cy="200" rx="180" ry="180" />
+    
+    <!-- Latitude lines -->
+    <ellipse cx="200" cy="200" rx="45" ry="180" />
+    <ellipse cx="200" cy="200" rx="90" ry="180" />
+    <ellipse cx="200" cy="200" rx="135" ry="180" />
+    <line x1="20" y1="200" x2="380" y2="200" />
+  </g>
+  
+  <!-- Highlight on the globe -->
+  <ellipse cx="150" cy="150" rx="60" ry="40" fill="url(#highlightGradient)" opacity="0.6" transform="rotate(-20 150 150)" />
+  
+  <!-- Travel route lines -->
+  <g stroke="#FFD54F" stroke-width="2" fill="none" opacity="0.8">
+    <path d="M100,160 Q200,140 300,160" stroke-dasharray="5,3">
+      <animate attributeName="stroke-dashoffset" values="0;16" dur="2s" repeatCount="indefinite" />
+    </path>
+    <path d="M160,120 Q220,180 280,140" stroke-dasharray="4,2">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="1.5s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Decorative stars around the globe -->
+  <g fill="#FFFFFF" opacity="0.7">
+    <polygon points="50,80 52,86 58,86 53,90 55,96 50,92 45,96 47,90 42,86 48,86" transform="scale(0.8)">
+      <animateTransform attributeName="transform" type="rotate" values="0 50 80;360 50 80" dur="8s" repeatCount="indefinite" />
+    </polygon>
+    <polygon points="350,70 352,76 358,76 353,80 355,86 350,82 345,86 347,80 342,76 348,76" transform="scale(0.6)">
+      <animateTransform attributeName="transform" type="rotate" values="360 350 70;0 350 70" dur="6s" repeatCount="indefinite" />
+    </polygon>
+    <polygon points="70,320 72,326 78,326 73,330 75,336 70,332 65,336 67,330 62,326 68,326" transform="scale(0.7)">
+      <animateTransform attributeName="transform" type="rotate" values="0 70 320;360 70 320" dur="10s" repeatCount="indefinite" />
+    </polygon>
+    <polygon points="330,310 332,316 338,316 333,320 335,326 330,322 325,326 327,320 322,316 328,316" transform="scale(0.5)">
+      <animateTransform attributeName="transform" type="rotate" values="360 330 310;0 330 310" dur="4s" repeatCount="indefinite" />
+    </polygon>
+  </g>
+  
+  <!-- Airplane icon -->
+  <g transform="translate(240,100) scale(0.8)" fill="#FFFFFF" opacity="0.9">
+    <path d="M0,5 L3,0 L15,0 L12,5 L15,10 L3,10 Z" />
+    <path d="M6,2 L6,8 L12,5 Z" />
+    <animateTransform attributeName="transform" type="translate" values="240,100;260,120;240,100" dur="4s" repeatCount="indefinite" />
+  </g>
+  
+  <!-- Outer glow effect -->
+  <circle cx="200" cy="200" r="185" fill="none" stroke="url(#globeGradient)" stroke-width="10" opacity="0.2" />
+</svg>

@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            Sanskar Shrestha
+                            <span class="text-primary">Travel Consultant</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Crafting unforgettable journeys and authentic travel experiences across Nepal and beyond
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-phone me-2"></i>Get In Touch
+                            </a>
+                            <a href="#about" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-user me-2"></i>Learn More
+                            </a>
+                        </div>
+                        <div class="company-info">
+                            <small class="text-muted">
+                                <i class="fas fa-building me-2"></i>
+                                Harvest Moon Travels & Tours (P.) LTD
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-globe">
+                        <div class="globe-container">
+                            <img src="{{ url_for('static', filename='assets/globe.svg') }}" alt="Earth Globe" class="animated-globe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Passionate about creating memorable travel experiences</p>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <h3 class="mb-4">Your Trusted Travel Partner</h3>
+                    <p class="lead">
+                        With years of experience in the travel industry, I specialize in creating personalized travel experiences that go beyond the ordinary. As a dedicated travel consultant at Harvest Moon Travels & Tours, I combine local expertise with global travel knowledge.
+                    </p>
+                    <div class="expertise-list">
+                        <div class="expertise-item">
+                            <i class="fas fa-map-marked-alt text-primary"></i>
+                            <div>
+                                <h5>Destination Expertise</h5>
+                                <p>Deep knowledge of Nepal's hidden gems and international destinations</p>
+                            </div>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-users text-primary"></i>
+                            <div>
+                                <h5>Personalized Service</h5>
+                                <p>Tailored itineraries that match your interests and budget</p>
+                            </div>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-shield-alt text-primary"></i>
+                            <div>
+                                <h5>Reliable Support</h5>
+                                <p>24/7 assistance throughout your journey for peace of mind</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-stats">
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <div class="stat-card">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Happy Travelers</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-card">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Destinations</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-card">
+                                <div class="stat-number">5+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-card">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="section-padding bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">My Services</h2>
+                <p class="section-subtitle">Comprehensive travel solutions for every type of journey</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h4>Custom Itineraries</h4>
+                    <p>Personalized travel plans crafted to match your interests, budget, and timeline. Every detail is carefully planned for your perfect journey.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h4>Adventure Tourism</h4>
+                    <p>Specializing in trekking, mountaineering, and adventure activities in the Himalayas. Experience Nepal's natural beauty safely and authentically.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-om"></i>
+                    </div>
+                    <h4>Cultural Tours</h4>
+                    <p>Immersive cultural experiences showcasing Nepal's rich heritage, ancient temples, and vibrant traditions with local expert guides.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h4>International Travel</h4>
+                    <p>Global travel planning with visa assistance, flight bookings, and accommodation arrangements for destinations worldwide.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Group Tours</h4>
+                    <p>Organized group travel experiences with like-minded travelers. Perfect for solo travelers looking to join group adventures.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4>24/7 Support</h4>
+                    <p>Round-the-clock assistance during your travels. Emergency support, itinerary changes, and local guidance whenever you need it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Destinations Section -->
+<section id="destinations" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">Destination Highlights</h2>
+                <p class="section-subtitle">Discover the most breathtaking destinations I specialize in</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <i class="fas fa-mountain destination-icon"></i>
+                    </div>
+                    <div class="destination-content">
+                        <h4>Everest Base Camp</h4>
+                        <p class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i> Solukhumbu, Nepal
+                        </p>
+                        <p>The ultimate trekking adventure to the base of the world's highest peak. Experience Sherpa culture and breathtaking Himalayan views.</p>
+                        <div class="destination-features">
+                            <span class="feature-tag">Trekking</span>
+                            <span class="feature-tag">Adventure</span>
+                            <span class="feature-tag">14 Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <i class="fas fa-temple destination-icon"></i>
+                    </div>
+                    <div class="destination-content">
+                        <h4>Kathmandu Valley</h4>
+                        <p class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal
+                        </p>
+                        <p>UNESCO World Heritage sites, ancient temples, and vibrant markets. Perfect introduction to Nepal's rich cultural heritage.</p>
+                        <div class="destination-features">
+                            <span class="feature-tag">Culture</span>
+                            <span class="feature-tag">Heritage</span>
+                            <span class="feature-tag">3-5 Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <i class="fas fa-water destination-icon"></i>
+                    </div>
+                    <div class="destination-content">
+                        <h4>Pokhara Lakes</h4>
+                        <p class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i> Pokhara, Nepal
+                        </p>
+                        <p>Serene lakes surrounded by the Annapurna range. Adventure activities, relaxation, and stunning mountain reflections.</p>
+                        <div class="destination-features">
+                            <span class="feature-tag">Lakes</span>
+                            <span class="feature-tag">Adventure</span>
+                            <span class="feature-tag">2-4 Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <i class="fas fa-tree destination-icon"></i>
+                    </div>
+                    <div class="destination-content">
+                        <h4>Chitwan National Park</h4>
+                        <p class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i> Chitwan, Nepal
+                        </p>
+                        <p>Wildlife safari in Nepal's first national park. Spot rhinos, tigers, elephants, and over 500 bird species in their natural habitat.</p>
+                        <div class="destination-features">
+                            <span class="feature-tag">Wildlife</span>
+                            <span class="feature-tag">Safari</span>
+                            <span class="feature-tag">2-3 Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <i class="fas fa-sun destination-icon"></i>
+                    </div>
+                    <div class="destination-content">
+                        <h4>Annapurna Circuit</h4>
+                        <p class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i> Annapurna Region, Nepal
+                        </p>
+                        <p>Classic trek through diverse landscapes, from subtropical forests to high alpine terrain. Cross the challenging Thorong La Pass.</p>
+                        <div class="destination-features">
+                            <span class="feature-tag">Trekking</span>
+                            <span class="feature-tag">Circuit</span>
+                            <span class="feature-tag">15-20 Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <i class="fas fa-dove destination-icon"></i>
+                    </div>
+                    <div class="destination-content">
+                        <h4>Lumbini</h4>
+                        <p class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i> Lumbini, Nepal
+                        </p>
+                        <p>Birthplace of Lord Buddha and a UNESCO World Heritage Site. Sacred pilgrimage destination with ancient monasteries and peace pagoda.</p>
+                        <div class="destination-features">
+                            <span class="feature-tag">Pilgrimage</span>
+                            <span class="feature-tag">Spiritual</span>
+                            <span class="feature-tag">1-2 Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CV Download Section -->
+<section class="cv-section section-padding bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-3">Download My CV</h2>
+                <p class="lead mb-0">
+                    Get a detailed overview of my experience, qualifications, and expertise in travel consulting. 
+                    Learn more about my professional background and how I can help plan your next adventure.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('download_cv') }}" class="btn btn-light btn-lg">
+                    <i class="fas fa-download me-2"></i>Download CV
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Ready to start planning your next adventure? Get in touch!</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-info text-center">
+                    <div class="contact-item mb-4">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Phone</h4>
+                        <p class="lead">+977-9700342200</p>
+                    </div>
+                    
+                    <div class="contact-buttons">
+                        <a href="https://wa.me/9779700342200" class="btn btn-success btn-lg contact-btn" target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp me-2"></i>
+                            <span class="btn-text">WhatsApp Chat</span>
+                        </a>
+                        <a href="mailto:sanskar.travel@example.com" class="btn btn-primary btn-lg contact-btn">
+                            <i class="fas fa-envelope me-2"></i>
+                            <span class="btn-text">Send Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="company-card text-center">
+                    <div class="company-logo">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Harvest Moon Travels & Tours (P.) LTD</h3>
+                    <p class="text-muted">Your trusted travel partner in Nepal</p>
+                    <div class="company-features">
+                        <div class="row text-center">
+                            <div class="col-md-3 col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-certificate text-primary"></i>
+                                    <small>Licensed</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-shield-alt text-primary"></i>
+                                    <small>Insured</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-clock text-primary"></i>
+                                    <small>24/7 Support</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-star text-primary"></i>
+                                    <small>Rated</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
