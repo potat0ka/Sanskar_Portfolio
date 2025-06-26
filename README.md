@@ -7,7 +7,6 @@ A professional Django-based portfolio website for Sanskar Shrestha, travel consu
 - **Interactive 3D Earth Globe**: Slow-rotating realistic Earth globe using Three.js, centered on Kathmandu, Nepal
 - **Responsive Design**: Mobile-first approach with breakpoints for all device sizes
 - **Professional Sections**:
-  - Landing page with full-screen globe animation
   - About Me with professional bio and skills
   - 6 Travel Services with icons and descriptions
   - Top Destinations showcase with image cards
