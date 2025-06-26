@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     'use strict';
     
     // Initialize all functionality
-    initThreeJSGlobe();
     initSmoothScrolling();
     initScrollAnimations();
     
