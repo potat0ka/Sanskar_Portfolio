@@ -591,6 +591,111 @@ function initGlobeAnimation() {
 /**
  * Initialize scroll-triggered animations
  */
+function initThreeJSGlobe() {
+    const container = document.getElementById('threejs-globe');
+    if (!container) {
+        console.log('Three.js globe container not found');
+        return;
+    }
+
+    try {
+        // Create scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
+        const containerSize = Math.min(container.offsetWidth, container.offsetHeight);
+        renderer.setSize(containerSize, containerSize);
+        renderer.setClearColor(0x000000, 0);
+        container.appendChild(renderer.domElement);
+
+        // Create Earth geometry
+        const geometry = new THREE.SphereGeometry(1, 64, 64);
+        
+        // Create Earth material with realistic texture
+        const textureLoader = new THREE.TextureLoader();
+        
+        // Create a realistic Earth texture using a data URL (blue oceans, green/brown continents)
+        const canvas = document.createElement('canvas');
+        canvas.width = 512;
+        canvas.height = 256;
+        const ctx = canvas.getContext('2d');
+        
+        // Create Earth-like texture
+        const gradient = ctx.createLinearGradient(0, 0, 512, 256);
+        gradient.addColorStop(0, '#1e3a8a'); // Deep blue
+        gradient.addColorStop(0.3, '#3b82f6'); // Ocean blue
+        gradient.addColorStop(0.5, '#22c55e'); // Green continents
+        gradient.addColorStop(0.7, '#a3a3a3'); // Mountain ranges
+        gradient.addColorStop(1, '#ffffff'); // Ice caps
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 512, 256);
+        
+        // Add continent-like shapes
+        ctx.fillStyle = '#16a34a';
+        ctx.fillRect(50, 80, 80, 60);
+        ctx.fillRect(200, 100, 120, 80);
+        ctx.fillRect(350, 90, 90, 70);
+        ctx.fillRect(80, 160, 100, 50);
+        ctx.fillRect(250, 170, 80, 40);
+        
+        // Add more detail
+        ctx.fillStyle = '#eab308';
+        ctx.fillRect(70, 120, 40, 30);
+        ctx.fillRect(220, 140, 60, 25);
+        
+        const texture = new THREE.CanvasTexture(canvas);
+        
+        const material = new THREE.MeshPhongMaterial({
+            map: texture,
+            transparent: true,
+            opacity: 0.9
+        });
+
+        // Create Earth mesh
+        const earth = new THREE.Mesh(geometry, material);
+        scene.add(earth);
+
+        // Add lighting
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+        scene.add(ambientLight);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(5, 3, 5);
+        scene.add(directionalLight);
+
+        // Position camera
+        camera.position.z = 2.5;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            earth.rotation.y += 0.005;
+            renderer.render(scene, camera);
+        }
+        
+        animate();
+        console.log('Three.js Earth globe initialized successfully');
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const newSize = Math.min(container.offsetWidth, container.offsetHeight);
+            renderer.setSize(newSize, newSize);
+            console.log('Window resized');
+        });
+        
+    } catch (error) {
+        console.error('Error initializing Three.js globe:', error);
+        // Fallback to simple animated div
+        container.innerHTML = '<div class="fallback-globe">🌍</div>';
+        container.style.display = 'flex';
+        container.style.alignItems = 'center';
+        container.style.justifyContent = 'center';
+        container.style.fontSize = '150px';
+    }
+}
+
 function initScrollAnimations() {
     // Create intersection observer for fade-in animations
     const observerOptions = {
@@ -629,11 +734,112 @@ function initScrollAnimations() {
                 opacity: 1 !important;
                 transform: translateY(0) !important;
             }
+            .fallback-globe {
+                animation: spin 10s linear infinite;
+            }
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
         `;
         document.head.appendChild(style);
     }
     
     // Animate counters in stats section
+    const statNumbers = document.querySelectorAll('.stat-number');
+    statNumbers.forEach(stat => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(stat);
+    });
+}
+
+function animateCounter(element) {
+    const target = parseInt(element.textContent.replace(/\D/g, ''));
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        const suffix = element.textContent.includes('%') ? '%' : 
+                      element.textContent.includes('+') ? '+' : '';
+        element.textContent = Math.floor(current) + suffix;
+    }, 16);
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Sanskar Shrestha Portfolio - JavaScript loaded successfully');
+    
+    // Initialize Three.js globe
+    if (typeof THREE !== 'undefined') {
+        initThreeJSGlobe();
+    } else {
+        console.log('Three.js not available, using fallback globe');
+        const container = document.getElementById('threejs-globe');
+        if (container) {
+            container.innerHTML = '<div class="fallback-globe">🌍</div>';
+            container.style.display = 'flex';
+            container.style.alignItems = 'center';
+            container.style.justifyContent = 'center';
+            container.style.fontSize = '150px';
+        }
+    }
+    
+    // Initialize scroll animations
+    initScrollAnimations();
+    
+    // Initialize smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Update active navigation links
+    window.addEventListener('scroll', updateActiveNavLink);
+    
+    console.log('Portfolio JavaScript initialized successfully');
+});
+
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let currentSection = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.pageYOffset >= sectionTop) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+        }
+    });
+}n
     const statNumbers = document.querySelectorAll('.stat-number');
     const statsObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
