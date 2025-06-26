@@ -3,64 +3,40 @@
 {% block content %}
 <!-- Hero Section -->
 <section id="home" class="hero-section">
+    <div class="space-background"></div>
     <div class="hero-content">
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6">
-                    <div class="hero-text">
-                        <h1 class="hero-title">
-                            Sanskar Shrestha
-                            <span class="text-primary">Travel Consultant</span>
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-12 text-center">
+                    <!-- Globe Container -->
+                    <div class="main-globe-container mb-5">
+                        <div id="threejs-globe" class="threejs-globe-canvas"></div>
+                    </div>
+                    
+                    <!-- Hero Content -->
+                    <div class="hero-text-center">
+                        <h1 class="hero-title-main">
+                            Discover Nepal with 
+                            <span class="text-primary">Sanskar Shrestha</span>
                         </h1>
-                        <p class="hero-subtitle">
-                            Crafting unforgettable journeys and authentic travel experiences across Nepal and beyond
+                        <p class="hero-subtitle-main">
+                            Professional travel consultant specializing in authentic Nepalese experiences.<br>
+                            From the majestic Himalayas to cultural heritage sites, let me guide your perfect journey.
                         </p>
-                        <div class="hero-buttons">
-                            <a href="#contact" class="btn btn-primary btn-lg me-3">
-                                <i class="fas fa-phone me-2"></i>Get In Touch
-                            </a>
-                            <a href="#about" class="btn btn-outline-light btn-lg">
-                                <i class="fas fa-user me-2"></i>Learn More
+                        <div class="hero-actions mb-4">
+                            <a href="#about" class="btn btn-primary btn-lg px-5 py-3">
+                                <i class="fas fa-rocket me-2"></i>Start Exploring
                             </a>
                         </div>
-                        <div class="company-info">
-                            <small class="text-muted">
+                        <div class="company-info-center">
+                            <p class="text-light mb-2">
                                 <i class="fas fa-building me-2"></i>
                                 Harvest Moon Travels & Tours (P.) LTD
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-globe">
-                        <div class="globe-search-container">
-                            <div class="globe-search-box">
-                                <input type="text" id="locationSearch" placeholder="Search destinations..." class="form-control globe-search-input">
-                                <button type="button" id="searchBtn" class="btn btn-primary globe-search-btn">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                            <div class="popular-destinations">
-                                <small class="text-muted">Popular: </small>
-                                <button class="destination-tag" data-location="Nepal">Nepal</button>
-                                <button class="destination-tag" data-location="Everest">Everest</button>
-                                <button class="destination-tag" data-location="Kathmandu">Kathmandu</button>
-                                <button class="destination-tag" data-location="Pokhara">Pokhara</button>
-                            </div>
-                        </div>
-                        <div class="globe-container">
-                            <div id="earth" class="webgl-earth-globe"></div>
-                        </div>
-                        <div class="globe-controls">
-                            <button class="globe-control-btn" id="zoomIn" title="Zoom In">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                            <button class="globe-control-btn" id="zoomOut" title="Zoom Out">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <button class="globe-control-btn" id="resetView" title="Reset View">
-                                <i class="fas fa-home"></i>
-                            </button>
+                            </p>
+                            <p class="text-light">
+                                <i class="fas fa-map-marker-alt me-2"></i>
+                                Thamel, Kathmandu, Nepal
+                            </p>
                         </div>
                     </div>
                 </div>
