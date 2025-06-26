@@ -1,104 +1,165 @@
 <svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Gradient definitions for the globe -->
-    <radialGradient id="globeGradient" cx="40%" cy="30%">
-      <stop offset="0%" style="stop-color:#4FC3F7;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#29B6F6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0277BD;stop-opacity:1" />
+    <!-- Ocean gradient - realistic blue shades -->
+    <radialGradient id="oceanGradient" cx="35%" cy="25%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#4682B4;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#1E3A8A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:1" />
     </radialGradient>
     
-    <!-- Gradient for continents -->
-    <radialGradient id="landGradient" cx="40%" cy="30%">
-      <stop offset="0%" style="stop-color:#81C784;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#66BB6A;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#388E3C;stop-opacity:1" />
+    <!-- Land gradient - realistic earth tones -->
+    <radialGradient id="landGradient" cx="35%" cy="25%">
+      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#228B22;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2F4F2F;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Mountain/Desert gradient -->
+    <radialGradient id="mountainGradient" cx="35%" cy="25%">
+      <stop offset="0%" style="stop-color:#F4A460;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#CD853F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B4513;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Ice/Snow gradient -->
+    <radialGradient id="iceGradient" cx="35%" cy="25%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F0F8FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B0E0E6;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Cloud pattern -->
+    <pattern id="cloudPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="15" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="10" cy="15" r="8" fill="#FFFFFF" opacity="0.2"/>
+      <circle cx="30" cy="25" r="10" fill="#FFFFFF" opacity="0.25"/>
+    </pattern>
+    
+    <!-- Atmosphere glow -->
+    <radialGradient id="atmosphereGradient" cx="50%" cy="50%">
+      <stop offset="85%" style="stop-color:#87CEEB;stop-opacity:0" />
+      <stop offset="95%" style="stop-color:#87CEEB;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#4169E1;stop-opacity:0.6" />
     </radialGradient>
     
     <!-- Shadow gradient -->
     <radialGradient id="shadowGradient" cx="50%" cy="50%">
-      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.3" />
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.4" />
+      <stop offset="70%" style="stop-color:#000000;stop-opacity:0.1" />
       <stop offset="100%" style="stop-color:#000000;stop-opacity:0" />
     </radialGradient>
     
-    <!-- Highlight gradient -->
-    <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.4" />
+    <!-- Sun highlight -->
+    <radialGradient id="sunHighlight" cx="30%" cy="20%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.8" />
+      <stop offset="30%" style="stop-color:#FFFFFF;stop-opacity:0.4" />
       <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
-    </linearGradient>
+    </radialGradient>
   </defs>
   
   <!-- Globe shadow -->
-  <ellipse cx="200" cy="360" rx="80" ry="20" fill="url(#shadowGradient)" opacity="0.5" />
+  <ellipse cx="210" cy="370" rx="90" ry="25" fill="url(#shadowGradient)" opacity="0.6" />
   
-  <!-- Main globe -->
-  <circle cx="200" cy="200" r="180" fill="url(#globeGradient)" stroke="#0277BD" stroke-width="2" />
+  <!-- Main Earth sphere -->
+  <circle cx="200" cy="200" r="180" fill="url(#oceanGradient)" />
   
-  <!-- Continents/Land masses -->
-  <!-- North America -->
-  <path d="M80,120 Q120,100 160,120 Q180,140 170,180 Q140,200 100,190 Q60,160 80,120 Z" fill="url(#landGradient)" opacity="0.9" />
+  <!-- Realistic continent shapes -->
   
-  <!-- South America -->
-  <path d="M140,220 Q160,200 180,220 Q190,260 180,300 Q160,320 140,300 Q120,260 140,220 Z" fill="url(#landGradient)" opacity="0.9" />
+  <!-- Africa -->
+  <path d="M200,110 C220,100 240,105 255,120 C270,140 275,160 280,180 C285,200 280,220 275,240 C270,260 260,280 245,290 C230,295 215,290 205,280 C195,270 190,250 195,230 C200,210 195,190 200,170 C205,150 200,130 200,110 Z" fill="url(#landGradient)" opacity="0.95" />
   
-  <!-- Europe/Africa -->
-  <path d="M220,100 Q260,80 300,100 Q320,140 310,180 Q290,220 250,210 Q210,170 220,100 Z" fill="url(#landGradient)" opacity="0.9" />
+  <!-- Europe -->
+  <path d="M190,100 C200,95 210,98 220,105 C225,110 230,120 225,130 C220,140 210,145 200,140 C190,135 185,125 185,115 C185,105 190,100 190,100 Z" fill="url(#landGradient)" opacity="0.95" />
   
   <!-- Asia -->
-  <path d="M320,120 Q360,100 380,140 Q370,180 340,200 Q310,180 320,120 Z" fill="url(#landGradient)" opacity="0.9" />
+  <path d="M280,90 C320,85 350,100 370,130 C375,150 370,170 360,185 C350,200 335,210 320,205 C305,200 295,185 300,170 C305,155 310,140 305,125 C300,110 290,100 280,90 Z" fill="url(#landGradient)" opacity="0.95" />
+  
+  <!-- North America -->
+  <path d="M80,110 C100,95 120,100 135,115 C150,130 155,150 150,170 C145,190 135,205 120,210 C105,215 90,210 80,195 C70,180 65,160 70,140 C75,125 80,110 80,110 Z" fill="url(#landGradient)" opacity="0.95" />
+  
+  <!-- South America -->
+  <path d="M140,220 C155,210 170,215 180,230 C185,245 185,260 180,275 C175,290 170,305 160,315 C150,325 135,320 125,305 C115,290 115,275 120,260 C125,245 130,230 140,220 Z" fill="url(#landGradient)" opacity="0.95" />
   
   <!-- Australia -->
-  <path d="M280,260 Q320,250 340,280 Q330,300 300,290 Q270,280 280,260 Z" fill="url(#landGradient)" opacity="0.9" />
+  <path d="M300,270 C315,265 330,270 340,280 C345,290 340,300 330,305 C320,310 305,305 300,295 C295,285 295,275 300,270 Z" fill="url(#landGradient)" opacity="0.95" />
   
-  <!-- Grid lines (latitude and longitude) -->
-  <g stroke="#FFFFFF" stroke-width="1" opacity="0.3" fill="none">
+  <!-- Greenland and Arctic -->
+  <path d="M150,60 C170,55 185,60 190,75 C185,85 175,90 165,85 C155,80 150,70 150,60 Z" fill="url(#iceGradient)" opacity="0.9" />
+  
+  <!-- Antarctica -->
+  <path d="M120,320 C200,315 280,320 320,325 C300,340 250,345 200,345 C150,345 100,340 120,320 Z" fill="url(#iceGradient)" opacity="0.9" />
+  
+  <!-- Mountain ranges (Himalayas, Andes, etc.) -->
+  <path d="M280,140 C290,135 300,140 295,150 C290,155 285,150 280,140 Z" fill="url(#mountainGradient)" opacity="0.8" />
+  <path d="M160,250 C165,245 170,250 165,255 C160,260 155,255 160,250 Z" fill="url(#mountainGradient)" opacity="0.8" />
+  
+  <!-- Cloud cover -->
+  <g opacity="0.3">
+    <ellipse cx="120" cy="150" rx="40" ry="20" fill="url(#cloudPattern)" />
+    <ellipse cx="280" cy="180" rx="35" ry="18" fill="url(#cloudPattern)" />
+    <ellipse cx="180" cy="250" rx="30" ry="15" fill="url(#cloudPattern)" />
+    <ellipse cx="320" cy="120" rx="25" ry="12" fill="url(#cloudPattern)" />
+  </g>
+  
+  <!-- Latitude and longitude grid -->
+  <g stroke="#FFFFFF" stroke-width="0.5" opacity="0.2" fill="none">
     <!-- Longitude lines -->
-    <ellipse cx="200" cy="200" rx="180" ry="60" />
-    <ellipse cx="200" cy="200" rx="180" ry="120" />
-    <ellipse cx="200" cy="200" rx="180" ry="180" />
+    <ellipse cx="200" cy="200" rx="180" ry="45" />
+    <ellipse cx="200" cy="200" rx="180" ry="90" />
+    <ellipse cx="200" cy="200" rx="180" ry="135" />
+    <line x1="20" y1="200" x2="380" y2="200" />
     
     <!-- Latitude lines -->
-    <ellipse cx="200" cy="200" rx="45" ry="180" />
+    <ellipse cx="200" cy="200" rx="30" ry="180" />
+    <ellipse cx="200" cy="200" rx="60" ry="180" />
     <ellipse cx="200" cy="200" rx="90" ry="180" />
-    <ellipse cx="200" cy="200" rx="135" ry="180" />
-    <line x1="20" y1="200" x2="380" y2="200" />
+    <ellipse cx="200" cy="200" rx="120" ry="180" />
+    <ellipse cx="200" cy="200" rx="150" ry="180" />
   </g>
   
-  <!-- Highlight on the globe -->
-  <ellipse cx="150" cy="150" rx="60" ry="40" fill="url(#highlightGradient)" opacity="0.6" transform="rotate(-20 150 150)" />
+  <!-- Sun highlight on the globe -->
+  <ellipse cx="140" cy="130" rx="80" ry="60" fill="url(#sunHighlight)" opacity="0.7" transform="rotate(-15 140 130)" />
   
-  <!-- Travel route lines -->
-  <g stroke="#FFD54F" stroke-width="2" fill="none" opacity="0.8">
-    <path d="M100,160 Q200,140 300,160" stroke-dasharray="5,3">
-      <animate attributeName="stroke-dashoffset" values="0;16" dur="2s" repeatCount="indefinite" />
-    </path>
-    <path d="M160,120 Q220,180 280,140" stroke-dasharray="4,2">
-      <animate attributeName="stroke-dashoffset" values="0;12" dur="1.5s" repeatCount="indefinite" />
-    </path>
+  <!-- Atmospheric glow -->
+  <circle cx="200" cy="200" r="190" fill="url(#atmosphereGradient)" />
+  
+  <!-- Orbiting satellite -->
+  <g opacity="0.8">
+    <circle cx="50" cy="100" r="2" fill="#FFD700">
+      <animateTransform attributeName="transform" type="rotate" values="0 200 200;360 200 200" dur="8s" repeatCount="indefinite" />
+    </circle>
   </g>
   
-  <!-- Decorative stars around the globe -->
-  <g fill="#FFFFFF" opacity="0.7">
-    <polygon points="50,80 52,86 58,86 53,90 55,96 50,92 45,96 47,90 42,86 48,86" transform="scale(0.8)">
-      <animateTransform attributeName="transform" type="rotate" values="0 50 80;360 50 80" dur="8s" repeatCount="indefinite" />
-    </polygon>
-    <polygon points="350,70 352,76 358,76 353,80 355,86 350,82 345,86 347,80 342,76 348,76" transform="scale(0.6)">
-      <animateTransform attributeName="transform" type="rotate" values="360 350 70;0 350 70" dur="6s" repeatCount="indefinite" />
-    </polygon>
-    <polygon points="70,320 72,326 78,326 73,330 75,336 70,332 65,336 67,330 62,326 68,326" transform="scale(0.7)">
-      <animateTransform attributeName="transform" type="rotate" values="0 70 320;360 70 320" dur="10s" repeatCount="indefinite" />
-    </polygon>
-    <polygon points="330,310 332,316 338,316 333,320 335,326 330,322 325,326 327,320 322,316 328,316" transform="scale(0.5)">
-      <animateTransform attributeName="transform" type="rotate" values="360 330 310;0 330 310" dur="4s" repeatCount="indefinite" />
-    </polygon>
+  <!-- International Space Station -->
+  <g opacity="0.9">
+    <rect x="348" y="148" width="4" height="2" fill="#C0C0C0">
+      <animateTransform attributeName="transform" type="rotate" values="0 200 200;360 200 200" dur="12s" repeatCount="indefinite" />
+    </rect>
   </g>
   
-  <!-- Airplane icon -->
-  <g transform="translate(240,100) scale(0.8)" fill="#FFFFFF" opacity="0.9">
-    <path d="M0,5 L3,0 L15,0 L12,5 L15,10 L3,10 Z" />
-    <path d="M6,2 L6,8 L12,5 Z" />
-    <animateTransform attributeName="transform" type="translate" values="240,100;260,120;240,100" dur="4s" repeatCount="indefinite" />
+  <!-- Day/night terminator line -->
+  <path d="M200,20 Q280,100 320,200 Q280,300 200,380" stroke="#000000" stroke-width="2" opacity="0.3" fill="none" />
+  
+  <!-- Night side darkening -->
+  <path d="M200,20 Q280,100 320,200 Q280,300 200,380 Q120,300 80,200 Q120,100 200,20 Z" fill="url(#shadowGradient)" opacity="0.4" />
+  
+  <!-- City lights on night side -->
+  <g opacity="0.6">
+    <circle cx="100" cy="180" r="1" fill="#FFFF00" opacity="0.8" />
+    <circle cx="110" cy="190" r="0.5" fill="#FFFF00" opacity="0.6" />
+    <circle cx="95" cy="200" r="0.8" fill="#FFFF00" opacity="0.7" />
+    <circle cx="120" cy="170" r="0.6" fill="#FFFF00" opacity="0.5" />
+    <circle cx="85" cy="220" r="0.7" fill="#FFFF00" opacity="0.8" />
   </g>
   
-  <!-- Outer glow effect -->
-  <circle cx="200" cy="200" r="185" fill="none" stroke="url(#globeGradient)" stroke-width="10" opacity="0.2" />
+  <!-- Subtle space background -->
+  <g opacity="0.4">
+    <circle cx="50" cy="50" r="1" fill="#FFFFFF" />
+    <circle cx="350" cy="80" r="0.8" fill="#FFFFFF" />
+    <circle cx="70" cy="350" r="1.2" fill="#FFFFFF" />
+    <circle cx="330" cy="320" r="0.6" fill="#FFFFFF" />
+    <circle cx="380" cy="150" r="0.9" fill="#FFFFFF" />
+  </g>
 </svg>
