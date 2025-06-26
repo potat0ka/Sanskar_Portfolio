@@ -210,7 +210,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
     transform: scaleX(0);
     transition: transform var(--transition-normal);
 }
@@ -227,7 +227,7 @@
 .service-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -275,7 +275,7 @@
 
 .destination-image {
     height: 200px;
-    background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -383,7 +383,7 @@
 .contact-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -443,7 +443,7 @@
 .company-logo {
     width: 100px;
     height: 100px;
-    background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -564,7 +564,7 @@
 }
 
 .destination-tag:hover {
-    background: var(--primary-color);
+    background: var(--accent-color);
     color: var(--white);
     transform: translateY(-1px);
     box-shadow: var(--shadow-sm);
@@ -597,7 +597,7 @@
 }
 
 .globe-control-btn:hover {
-    background: var(--primary-color);
+    background: var(--accent-color);
     color: var(--white);
     transform: scale(1.1);
     box-shadow: var(--shadow-md);
