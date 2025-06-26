@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
- * Initialize Three.js Earth Globe
+ * Initialize Airplane Animation
  */
 function initThreeJSGlobe() {
     const container = document.getElementById('globe-canvas');
@@ -24,115 +24,8 @@ function initThreeJSGlobe() {
         return;
     }
 
-    if (typeof THREE === 'undefined') {
-        console.warn('Three.js library not loaded, creating fallback globe');
-        createFallbackGlobe(container);
-        return;
-    }
-
-    try {
-        // Scene setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ 
-            antialias: true, 
-            alpha: true 
-        });
-        
-        // Set renderer size and properties
-        const size = Math.min(container.clientWidth, container.clientHeight);
-        renderer.setSize(size, size);
-        renderer.setClearColor(0x000000, 0);
-        container.appendChild(renderer.domElement);
-
-        // Create low-poly Earth geometry
-        const geometry = new THREE.IcosahedronGeometry(5, 1);
-        
-        // Create base Earth material (blue oceans)
-        const earthMaterial = new THREE.MeshLambertMaterial({
-            color: 0x4a90e2,
-            flatShading: true
-        });
-
-        // Create Earth mesh
-        const earth = new THREE.Mesh(geometry, earthMaterial);
-        scene.add(earth);
-
-        // Add colorful continents as separate meshes
-        createContinents(earth);
-        
-        // Add small characters and objects around the globe
-        createCharacters(scene);
-
-        // Add realistic lighting
-        const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
-        scene.add(ambientLight);
-
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(10, 5, 5);
-        scene.add(directionalLight);
-
-        // Add rim lighting
-        const rimLight = new THREE.DirectionalLight(0x4a90e2, 0.3);
-        rimLight.position.set(-10, 0, -5);
-        scene.add(rimLight);
-
-        // Position camera
-        camera.position.z = 15;
-
-        // Add stars background
-        createStarField(scene);
-
-        // Animation loop with slow rotation (30 seconds per revolution)
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            // Slow, smooth rotation
-            earth.rotation.y += 0.002;
-            
-            // Subtle floating motion
-            earth.position.y = Math.sin(Date.now() * 0.001) * 0.1;
-            
-            // Animate characters if they exist
-            if (scene.userData.characters) {
-                scene.userData.characters.forEach((character, index) => {
-                    // Orbital motion around the globe
-                    const time = Date.now() * 0.001;
-                    const radius = 8 + index * 0.5;
-                    const speed = 0.3 + index * 0.1;
-                    const offset = index * Math.PI * 0.5;
-                    
-                    character.position.x = Math.cos(time * speed + offset) * radius;
-                    character.position.z = Math.sin(time * speed + offset) * radius;
-                    character.position.y += Math.sin(time * 2 + offset) * 0.05;
-                    
-                    // Rotate characters to face movement direction
-                    character.rotation.y = time * speed + offset + Math.PI / 2;
-                });
-            }
-            
-            renderer.render(scene, camera);
-        }
-
-        // Start animation
-        animate();
-
-        // Handle window resize
-        function onWindowResize() {
-            const newSize = Math.min(container.clientWidth, container.clientHeight);
-            camera.aspect = 1;
-            camera.updateProjectionMatrix();
-            renderer.setSize(newSize, newSize);
-        }
-
-        window.addEventListener('resize', onWindowResize);
-
-        console.log('Three.js Earth globe initialized successfully');
-
-    } catch (error) {
-        console.error('Error initializing Three.js globe:', error);
-        createFallbackGlobe(container);
-    }
+    // Create airplane animation container
+    createAirplaneAnimation(container);
 }
 
 /**
@@ -374,6 +267,278 @@ function createStarField(scene) {
 
     const stars = new THREE.Points(starGeometry, starMaterial);
     scene.add(stars);
+}
+
+/**
+ * Create animated airplane display
+ */
+function createAirplaneAnimation(container) {
+    container.innerHTML = `
+        <div class="airplane-animation-container">
+            <div class="airplane-wrapper">
+                <div class="airplane">
+                    <!-- Airplane body -->
+                    <div class="airplane-body"></div>
+                    <!-- Wings -->
+                    <div class="airplane-wing-left"></div>
+                    <div class="airplane-wing-right"></div>
+                    <!-- Engines -->
+                    <div class="airplane-engine-1"></div>
+                    <div class="airplane-engine-2"></div>
+                    <div class="airplane-engine-3"></div>
+                    <div class="airplane-engine-4"></div>
+                    <!-- Tail -->
+                    <div class="airplane-tail"></div>
+                    <div class="airplane-tail-fin"></div>
+                    <!-- Landing gear -->
+                    <div class="airplane-gear-front"></div>
+                    <div class="airplane-gear-left"></div>
+                    <div class="airplane-gear-right"></div>
+                </div>
+                
+                <!-- Flight path lines -->
+                <div class="flight-path path-1"></div>
+                <div class="flight-path path-2"></div>
+                <div class="flight-path path-3"></div>
+                
+                <!-- Clouds -->
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+            </div>
+        </div>
+    `;
+
+    // Add CSS styles for airplane animation
+    const style = document.createElement('style');
+    style.textContent = `
+        .airplane-animation-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(135deg, #626675 0%, #D1D3CE 50%, #BB4500 100%);
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 
+                0 0 50px rgba(98, 102, 117, 0.3),
+                0 0 100px rgba(98, 102, 117, 0.2);
+        }
+        
+        .airplane-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            animation: airplaneFloat 6s ease-in-out infinite;
+        }
+        
+        .airplane {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 40px;
+            animation: airplaneFly 8s linear infinite;
+        }
+        
+        .airplane-body {
+            position: absolute;
+            width: 100px;
+            height: 12px;
+            background: #666;
+            border-radius: 0 50px 50px 0;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .airplane-wing-left,
+        .airplane-wing-right {
+            position: absolute;
+            width: 45px;
+            height: 8px;
+            background: #888;
+            border-radius: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .airplane-wing-left {
+            left: 25px;
+            transform: translateY(-50%) rotate(-15deg);
+        }
+        
+        .airplane-wing-right {
+            left: 25px;
+            transform: translateY(-50%) rotate(15deg);
+        }
+        
+        .airplane-engine-1,
+        .airplane-engine-2,
+        .airplane-engine-3,
+        .airplane-engine-4 {
+            position: absolute;
+            width: 8px;
+            height: 6px;
+            background: #444;
+            border-radius: 50%;
+        }
+        
+        .airplane-engine-1 {
+            top: 30%;
+            left: 35px;
+        }
+        
+        .airplane-engine-2 {
+            top: 65%;
+            left: 35px;
+        }
+        
+        .airplane-engine-3 {
+            top: 30%;
+            left: 50px;
+        }
+        
+        .airplane-engine-4 {
+            top: 65%;
+            left: 50px;
+        }
+        
+        .airplane-tail {
+            position: absolute;
+            width: 20px;
+            height: 6px;
+            background: #666;
+            border-radius: 0 4px 4px 0;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+        
+        .airplane-tail-fin {
+            position: absolute;
+            width: 15px;
+            height: 20px;
+            background: #777;
+            border-radius: 0 8px 8px 0;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+        }
+        
+        .airplane-gear-front,
+        .airplane-gear-left,
+        .airplane-gear-right {
+            position: absolute;
+            width: 3px;
+            height: 8px;
+            background: #333;
+            border-radius: 0 0 2px 2px;
+        }
+        
+        .airplane-gear-front {
+            bottom: -8px;
+            left: 15px;
+        }
+        
+        .airplane-gear-left {
+            bottom: -8px;
+            left: 40px;
+        }
+        
+        .airplane-gear-right {
+            bottom: -8px;
+            left: 55px;
+        }
+        
+        .flight-path {
+            position: absolute;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 1px;
+            animation: pathMove 4s linear infinite;
+        }
+        
+        .path-1 {
+            width: 150px;
+            top: 25%;
+            left: -20px;
+            animation-delay: 0s;
+        }
+        
+        .path-2 {
+            width: 120px;
+            top: 60%;
+            left: -15px;
+            animation-delay: 1.5s;
+        }
+        
+        .path-3 {
+            width: 100px;
+            top: 80%;
+            left: -10px;
+            animation-delay: 3s;
+        }
+        
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50px;
+            animation: cloudFloat 10s linear infinite;
+        }
+        
+        .cloud-1 {
+            width: 40px;
+            height: 20px;
+            top: 15%;
+            left: -50px;
+        }
+        
+        .cloud-2 {
+            width: 35px;
+            height: 18px;
+            top: 75%;
+            left: -40px;
+            animation-delay: 3s;
+        }
+        
+        .cloud-3 {
+            width: 30px;
+            height: 15px;
+            top: 40%;
+            left: -35px;
+            animation-delay: 6s;
+        }
+        
+        @keyframes airplaneFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(2deg); }
+            50% { transform: translateY(0px) rotate(0deg); }
+            75% { transform: translateY(-5px) rotate(-1deg); }
+        }
+        
+        @keyframes airplaneFly {
+            0% { transform: translate(-50%, -50%) translateX(-20px); }
+            50% { transform: translate(-50%, -50%) translateX(20px); }
+            100% { transform: translate(-50%, -50%) translateX(-20px); }
+        }
+        
+        @keyframes pathMove {
+            0% { transform: translateX(0px); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateX(120px); opacity: 0; }
+        }
+        
+        @keyframes cloudFloat {
+            0% { transform: translateX(0px); }
+            100% { transform: translateX(120px); }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    console.log('Airplane animation created');
 }
 
 /**
