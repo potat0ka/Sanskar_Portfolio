@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section with Three.js Globe -->
+<section class="hero-section">
+    <!-- Animated Stars Background -->
+    <div class="stars-background"></div>
+    
+    <!-- Globe Container -->
+    <div class="globe-container">
+        <div id="globe-canvas" class="globe-canvas"></div>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <h1 class="hero-title">
+            Sanskar Shrestha
+            <br><span style="color: var(--primary-color);">Travel Consultant</span>
+        </h1>
+        <p class="hero-subtitle">
+            Crafting unforgettable journeys and authentic travel experiences across Nepal and beyond.<br>
+            Your trusted partner at {{ company_name }}.
+        </p>
+        <a href="#about" class="cta-button">
+            <i class="fas fa-rocket"></i>
+            Start Exploring
+        </a>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <a href="#about" class="scroll-arrow">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
+</section>
+
+<!-- About Me Section -->
+<section id="about" class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Passionate about creating memorable travel experiences</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-6">
+                <div class="about-content">
+                    <h3 class="mb-3" style="font-size: 1.5rem; font-weight: 600; color: var(--text-dark);">Your Trusted Travel Partner</h3>
+                    <p class="about-text">
+                        With years of experience in the travel industry, I specialize in creating personalized travel experiences that go beyond the ordinary. As a dedicated travel consultant at {{ company_name }}, I combine local expertise with global travel knowledge to craft journeys that inspire and transform.
+                    </p>
+                    <p class="about-text">
+                        From the majestic peaks of the Himalayas to the ancient temples of Kathmandu, I help travelers discover the authentic beauty of Nepal while ensuring comfort, safety, and unforgettable memories.
+                    </p>
+                    
+                    <div class="skills-list">
+                        <span class="skill-tag">Cultural Tours</span>
+                        <span class="skill-tag">Trekking Expert</span>
+                        <span class="skill-tag">Adventure Planning</span>
+                        <span class="skill-tag">Local Guide Networks</span>
+                        <span class="skill-tag">Sustainable Tourism</span>
+                        <span class="skill-tag">Multilingual Support</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <img src="{% static 'images/sanskar-portrait.jpg' %}" alt="Sanskar Shrestha" class="about-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- My Services Section -->
+<section id="services" class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">My Services</h2>
+            <p class="section-subtitle">Comprehensive travel solutions tailored to your dreams</p>
+        </div>
+        
+        <div class="card-grid card-grid-3">
+            {% for service in services %}
+            <div class="card service-card">
+                <div class="service-icon">
+                    <i class="{{ service.icon }}"></i>
+                </div>
+                <h3 class="service-title">{{ service.title }}</h3>
+                <p class="service-description">{{ service.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Top Destinations Section -->
+<section id="destinations" class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Top Destinations</h2>
+            <p class="section-subtitle">Explore Nepal's most breathtaking locations</p>
+        </div>
+        
+        <div class="card-grid card-grid-3">
+            {% for destination in destinations %}
+            <div class="destination-card">
+                <img src="{% static destination.image %}" alt="{{ destination.name }}" class="destination-image">
+                <div class="destination-overlay">
+                    <h3 class="destination-name">{{ destination.name }}</h3>
+                    <p class="destination-description">{{ destination.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Who I Work With Section -->
+<section id="personas" class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Who I Work With</h2>
+            <p class="section-subtitle">Tailored experiences for every type of traveler</p>
+        </div>
+        
+        <div class="card-grid card-grid-4">
+            {% for persona in personas %}
+            <div class="card persona-card">
+                <div class="persona-icon">
+                    <i class="{{ persona.icon }}"></i>
+                </div>
+                <h3 class="persona-title">{{ persona.title }}</h3>
+                <p class="persona-description">{{ persona.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CV Download Section -->
+<section id="cv" class="content-section cv-section">
+    <div class="container">
+        <div class="cv-content">
+            <h2 class="cv-title">Download My CV</h2>
+            <p class="cv-description">
+                Get detailed information about my experience, qualifications, and expertise in travel consulting. 
+                Learn more about how I can help plan your perfect journey.
+            </p>
+            <a href="{% url 'portfolio:download_cv' %}" class="cv-button" target="_blank">
+                <i class="fas fa-download"></i>
+                Download CV (PDF)
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Me Section -->
+<section id="contact" class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Contact Me</h2>
+            <p class="section-subtitle">Ready to start planning your next adventure?</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="contact-info">
+                    <h3 class="contact-title">Let's Plan Your Journey Together</h3>
+                    <p class="contact-subtitle">
+                        Get in touch to discuss your travel dreams and let me create the perfect itinerary for you.
+                    </p>
+                    
+                    <div class="contact-buttons">
+                        <a href="https://wa.me/{{ contact_number|slice:'1:' }}" class="btn-contact" target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp: {{ contact_number }}
+                        </a>
+                        <a href="mailto:sanskar@harvestmoon.com" class="btn-contact btn-email" target="_blank" rel="noopener">
+                            <i class="fas fa-envelope"></i>
+                            Send Email
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <p style="margin-bottom: 8px;">
+                            <i class="fas fa-building" style="margin-right: 8px;"></i>
+                            {{ company_name }}
+                        </p>
+                        <p style="margin-bottom: 8px;">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>
+                            Thamel, Kathmandu, Nepal
+                        </p>
+                        <p>
+                            <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                            {{ contact_number }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

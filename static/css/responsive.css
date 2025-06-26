@@ -1,9 +1,9 @@
 /*
- * Responsive CSS
- * Media queries and responsive design adjustments
+ * Responsive CSS for Sanskar Shrestha Portfolio
+ * Media queries and responsive design adaptations
  */
 
-/* Large Desktop Screens */
+/* Large Desktop (1400px and up) */
 @media (min-width: 1400px) {
     .container {
         max-width: 1320px;
@@ -13,28 +13,28 @@
         font-size: 4rem;
     }
     
-    .section-title {
-        font-size: 3rem;
-    }
-    
     .globe-container {
         width: 500px;
         height: 500px;
     }
+    
+    .section-title {
+        font-size: 3rem;
+    }
 }
 
-/* Desktop Screens */
+/* Desktop (1200px and up) */
 @media (min-width: 1200px) {
-    .hero-section {
-        padding: 0;
+    .card-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
     }
     
-    .section-padding {
-        padding: 100px 0;
+    .card-grid-4 {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
-/* Tablet Landscape */
+/* Tablet Landscape (992px to 1199px) */
 @media (max-width: 1199.98px) {
     .hero-title {
         font-size: 3rem;
@@ -49,175 +49,75 @@
         height: 350px;
     }
     
-    .main-globe-container {
-        width: 350px;
-        height: 350px;
-    }
-    
-    .service-card,
-    .destination-card {
-        margin-bottom: var(--spacing-lg);
+    .card-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Tablet Portrait */
+/* Tablet Portrait (768px to 991px) */
 @media (max-width: 991.98px) {
-    .section-padding {
-        padding: 60px 0;
-    }
-    
     .hero-title {
         font-size: 2.5rem;
-        text-align: center;
     }
     
     .hero-subtitle {
-        text-align: center;
-        font-size: var(--font-size-lg);
-    }
-    
-    .hero-buttons {
-        text-align: center;
-    }
-    
-    .hero-globe {
-        margin-top: var(--spacing-xl);
-        margin-bottom: var(--spacing-xl);
+        font-size: 1.125rem;
     }
     
     .globe-container {
-        width: 350px;
-        height: 300px;
-    }
-    
-    .nasa-earth-globe {
-        width: 350px;
-        height: 300px;
-    }
-    
-    .webgl-earth-globe {
-        width: 350px;
-        height: 300px;
-    }
-    
-    .globe-search-box {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-    }
-    
-    .globe-search-btn {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .popular-destinations {
-        justify-content: center;
-    }
-    
-    .globe-controls {
-        flex-direction: row;
-        bottom: var(--spacing-md);
-        top: auto;
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
-    }
-    
-    .company-info {
-        text-align: center;
+        width: 320px;
+        height: 320px;
+        margin-bottom: 30px;
     }
     
     .section-title {
         font-size: 2rem;
     }
     
-    .about-stats {
-        margin-top: var(--spacing-xl);
+    .card-grid-3,
+    .card-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
     }
     
-    .stat-card {
-        margin-bottom: var(--spacing-lg);
+    .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
     
-    .expertise-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .expertise-item i {
-        margin-right: 0;
-        margin-bottom: var(--spacing-sm);
+    .about-image {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 30px;
     }
     
     .contact-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
-    .contact-btn {
-        width: 100%;
-        max-width: 300px;
-    }
 }
 
-/* Mobile Landscape */
+/* Mobile Landscape (576px to 767px) */
 @media (max-width: 767.98px) {
-    .section-padding {
-        padding: 40px 0;
-    }
-    
     .hero-section {
-        text-align: center;
+        padding: 40px 0;
+        min-height: 100vh;
     }
     
     .hero-title {
         font-size: 2rem;
-        margin-bottom: var(--spacing-md);
+        line-height: 1.2;
+        margin-bottom: 15px;
     }
     
     .hero-subtitle {
-        font-size: var(--font-size-base);
-        margin-bottom: var(--spacing-lg);
-    }
-    
-    .hero-buttons .btn {
-        display: block;
-        width: 100%;
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .hero-buttons .btn:last-child {
-        margin-bottom: 0;
+        font-size: 1rem;
+        margin-bottom: 30px;
     }
     
     .globe-container {
-        width: 300px;
-        height: 250px;
-    }
-    
-    .main-globe-container {
-        width: 300px;
-        height: 300px;
-    }
-    
-    .nasa-earth-globe {
-        width: 300px;
-        height: 250px;
-    }
-    
-    .webgl-earth-globe {
-        width: 300px;
-        height: 250px;
-    }
-    
-    .hero-title-main {
-        font-size: 2rem;
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .hero-subtitle-main {
-        font-size: var(--font-size-base);
-        margin-bottom: var(--spacing-lg);
+        width: 280px;
+        height: 280px;
+        margin-bottom: 25px;
     }
     
     .section-title {
@@ -225,122 +125,66 @@
     }
     
     .section-subtitle {
-        font-size: var(--font-size-base);
+        font-size: 1rem;
     }
     
-    /* Navigation adjustments */
-    .navbar-brand {
-        font-size: var(--font-size-lg);
+    .content-section {
+        padding: 60px 0;
     }
     
-    .navbar-collapse {
-        margin-top: var(--spacing-md);
-        background: rgba(0, 0, 0, 0.9);
-        border-radius: var(--border-radius);
-        padding: var(--spacing-md);
-        margin-left: -15px;
-        margin-right: -15px;
+    .section-header {
+        margin-bottom: 40px;
     }
     
-    .nav-link {
-        padding: var(--spacing-sm) var(--spacing-md);
-        text-align: center;
+    .card-grid,
+    .card-grid-2,
+    .card-grid-3,
+    .card-grid-4 {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
-    /* Card adjustments */
-    .service-card,
-    .destination-card {
-        margin-bottom: var(--spacing-lg);
-    }
-    
-    .service-card {
-        padding: var(--spacing-lg);
+    .card {
+        padding: 20px;
     }
     
     .service-icon {
         width: 60px;
         height: 60px;
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .service-icon i {
-        font-size: 1.5rem;
-    }
-    
-    .destination-image {
-        height: 150px;
-    }
-    
-    .destination-icon {
-        font-size: 3rem;
-    }
-    
-    .destination-content {
-        padding: var(--spacing-md);
-    }
-    
-    /* Stats grid */
-    .about-stats .row > * {
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-    }
-    
-    /* Contact section */
-    .contact-icon {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .contact-icon i {
-        font-size: 1.5rem;
-    }
-    
-    .contact-btn {
-        min-width: auto;
-        padding: var(--spacing-md) var(--spacing-lg);
-        font-size: var(--font-size-base);
-    }
-    
-    /* Company features */
-    .company-features .col-6 {
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .feature-item {
-        padding: var(--spacing-sm);
-    }
-    
-    .feature-item i {
         font-size: 1.25rem;
     }
     
-    /* CV section */
-    .cv-section .row {
-        text-align: center;
+    .persona-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
     }
     
-    .cv-section .col-lg-4 {
-        margin-top: var(--spacing-lg);
+    .about-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .contact-info {
+        padding: 30px 20px;
+    }
+    
+    .btn-lg {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 14px 28px;
+        font-size: 1rem;
     }
 }
 
-/* Mobile Portrait */
+/* Mobile Portrait (up to 575px) */
 @media (max-width: 575.98px) {
-    :root {
-        --spacing-xxl: 2rem;
-        --spacing-xl: 1.5rem;
-    }
-    
-    .container {
-        padding-left: var(--spacing-md);
-        padding-right: var(--spacing-md);
-    }
-    
-    .section-padding {
-        padding: 30px 0;
+    .container,
+    .container-fluid {
+        padding: 0 15px;
     }
     
     .hero-title {
@@ -353,39 +197,10 @@
         line-height: 1.5;
     }
     
-    .btn-lg {
-        padding: var(--spacing-sm) var(--spacing-lg);
-        font-size: var(--font-size-base);
-    }
-    
     .globe-container {
-        width: 280px;
-        height: 220px;
-    }
-    
-    .main-globe-container {
-        width: 280px;
-        height: 280px;
-    }
-    
-    .nasa-earth-globe {
-        width: 280px;
-        height: 220px;
-    }
-    
-    .webgl-earth-globe {
-        width: 280px;
-        height: 220px;
-    }
-    
-    .hero-title-main {
-        font-size: 1.75rem;
-        line-height: 1.2;
-    }
-    
-    .hero-subtitle-main {
-        font-size: 0.9rem;
-        line-height: 1.5;
+        width: 250px;
+        height: 250px;
+        margin-bottom: 20px;
     }
     
     .section-title {
@@ -396,240 +211,248 @@
         font-size: 0.9rem;
     }
     
-    /* Reduce padding on cards */
-    .service-card {
-        padding: var(--spacing-md);
+    .content-section {
+        padding: 50px 0;
     }
     
-    .destination-content {
-        padding: var(--spacing-sm);
+    .card {
+        padding: 15px;
     }
     
-    .about-content .lead {
-        font-size: var(--font-size-base);
+    .service-card,
+    .persona-card {
+        padding: 20px 15px;
     }
     
-    .expertise-item {
-        padding: var(--spacing-sm);
-        margin-bottom: var(--spacing-md);
+    .service-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+        margin-bottom: 15px;
     }
     
-    /* Adjust button sizes */
-    .contact-btn {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: 0.9rem;
-        min-width: auto;
+    .service-title {
+        font-size: 1.125rem;
     }
     
-    .contact-btn i {
+    .persona-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.25rem;
+    }
+    
+    .persona-title {
+        font-size: 1.25rem;
+    }
+    
+    .about-image {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .about-text {
         font-size: 1rem;
     }
     
-    /* Footer adjustments */
-    footer .row > * {
-        text-align: center;
-        margin-bottom: var(--spacing-sm);
+    .contact-info {
+        padding: 25px 15px;
     }
     
-    footer .row > *:last-child {
-        margin-bottom: 0;
+    .contact-title {
+        font-size: 1.25rem;
     }
     
-    /* Reduce company card padding */
-    .company-card {
-        padding: var(--spacing-lg);
-    }
-    
-    .company-logo {
-        width: 80px;
-        height: 80px;
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .company-logo i {
-        font-size: 2rem;
-    }
-    
-    /* Feature tags */
-    .destination-features {
+    .btn-contact,
+    .btn-email {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        width: 100%;
         justify-content: center;
     }
     
-    .feature-tag {
-        font-size: 0.7rem;
-        padding: 2px 6px;
+    .cv-title {
+        font-size: 1.5rem;
+    }
+    
+    .cv-description {
+        font-size: 1rem;
+    }
+    
+    .cv-button {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+    
+    .skills-list {
+        justify-content: center;
+    }
+    
+    .skill-tag {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+    
+    .destination-card {
+        height: 250px;
+    }
+    
+    .destination-overlay {
+        padding: 20px 15px 15px;
+    }
+    
+    .destination-name {
+        font-size: 1.125rem;
     }
 }
 
-/* Small Mobile Screens */
+/* Small Mobile (up to 375px) */
 @media (max-width: 375px) {
     .hero-title {
         font-size: 1.5rem;
     }
     
+    .hero-subtitle {
+        font-size: 0.85rem;
+    }
+    
     .globe-container {
-        width: 250px;
-        height: 200px;
-    }
-    
-    .nasa-earth-globe {
-        width: 250px;
-        height: 200px;
-    }
-    
-    .webgl-earth-globe {
-        width: 250px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
     }
     
     .section-title {
-        font-size: 1.3rem;
+        font-size: 1.375rem;
     }
     
-    .btn {
-        font-size: 0.8rem;
-        padding: var(--spacing-xs) var(--spacing-md);
-    }
-    
-    .btn-lg {
+    .cta-button,
+    .btn-lg,
+    .cv-button {
+        padding: 12px 24px;
         font-size: 0.9rem;
-        padding: var(--spacing-sm) var(--spacing-md);
     }
     
-    .contact-buttons {
-        gap: var(--spacing-md);
+    .card {
+        padding: 12px;
     }
     
-    .navbar-brand {
-        font-size: var(--font-size-base);
+    .service-icon,
+    .persona-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 0.9rem;
     }
 }
 
-/* Landscape orientation adjustments for mobile */
+/* Landscape orientation adjustments */
 @media (max-height: 500px) and (orientation: landscape) {
     .hero-section {
         min-height: 100vh;
-        display: flex;
-        align-items: center;
+        padding: 20px 0;
     }
     
-    .hero-content .row {
-        align-items: center;
+    .globe-container {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 15px;
     }
     
     .hero-title {
         font-size: 1.5rem;
-        margin-bottom: var(--spacing-sm);
+        margin-bottom: 10px;
     }
     
     .hero-subtitle {
         font-size: 0.9rem;
-        margin-bottom: var(--spacing-md);
+        margin-bottom: 20px;
     }
     
-    .hero-buttons {
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .globe-container {
-        width: 220px;
-        height: 180px;
-    }
-    
-    .nasa-earth-globe {
-        width: 220px;
-        height: 180px;
-    }
-    
-    .webgl-earth-globe {
-        width: 220px;
-        height: 180px;
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
     
     .scroll-indicator {
         display: none;
     }
-    
-    .section-padding {
-        padding: 20px 0;
-    }
 }
 
 /* Print styles */
 @media print {
-    .navbar,
-    .scroll-indicator,
-    .btn,
-    footer {
-        display: none !important;
-    }
-    
     .hero-section {
         background: none !important;
-        color: var(--dark-color) !important;
+        color: var(--text-dark) !important;
+        min-height: auto;
         page-break-after: always;
     }
     
-    .section-padding {
-        padding: 20px 0;
+    .stars-background,
+    .globe-container,
+    .scroll-indicator {
+        display: none !important;
     }
     
-    .card,
-    .service-card,
-    .destination-card {
+    .btn,
+    .btn-contact,
+    .btn-email {
+        display: none !important;
+    }
+    
+    .card {
         box-shadow: none !important;
-        border: 1px solid var(--secondary-color);
+        border: 1px solid var(--text-muted);
         page-break-inside: avoid;
     }
     
-    a[href^="http"]:after {
-        content: " (" attr(href) ")";
-        font-size: 0.8rem;
-        color: var(--secondary-color);
-    }
-}
-
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-    .animated-globe {
-        animation: none;
+    .content-section {
+        padding: 30px 0;
     }
     
-    .scroll-down {
-        animation: none;
-    }
-    
-    .contact-icon {
-        animation: none;
-    }
-    
-    .btn::before {
-        display: none;
-    }
-    
-    * {
-        transition: none !important;
-        animation: none !important;
+    .section-title {
+        color: var(--text-dark) !important;
     }
 }
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
+    .card {
+        border: 2px solid var(--text-dark);
+    }
+    
     .btn {
-        border-width: 2px;
+        border: 2px solid currentColor;
     }
     
-    .card,
-    .service-card,
-    .destination-card {
-        border: 2px solid var(--dark-color);
+    .service-icon,
+    .persona-icon {
+        border: 2px solid var(--primary-text);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .stars-background {
+        animation: none !important;
     }
     
-    .nav-link::after {
-        height: 3px;
+    .card:hover {
+        transform: none !important;
     }
     
-    .section-title::after {
-        height: 4px;
+    .btn:hover,
+    .cta-button:hover {
+        transform: none !important;
+    }
+    
+    .destination-card:hover .destination-image {
+        transform: none !important;
+    }
+    
+    .fade-in,
+    .slide-up {
+        animation: none !important;
+    }
+    
+    .scroll-arrow {
+        animation: none !important;
     }
 }

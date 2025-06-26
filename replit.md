@@ -2,18 +2,19 @@
 
 ## Overview
 
-This is a professional portfolio website for Sanskar Shrestha, a travel consultant at Harvest Moon Travels & Tours (P.) LTD. The application is built using Flask as the backend framework with a modern, responsive frontend featuring interactive elements and professional design optimized for the travel industry.
+This is a professional portfolio website for Sanskar Shrestha, a travel consultant at Harvest Moon Travels & Tours (P.) LTD. The application has been converted to Django 5.2.3 with a modern, responsive frontend featuring a Three.js Earth globe animation and professional design optimized for the travel industry.
 
 ## System Architecture
 
 ### Backend Architecture
-- **Framework**: Flask (Python web framework)
-- **Template Engine**: Jinja2 for dynamic content rendering
+- **Framework**: Django 5.2.3 (Python web framework)
+- **Template Engine**: Django template system for dynamic content rendering
 - **Application Structure**: 
-  - `app.py`: Flask application factory and configuration
-  - `main.py`: Application entry point for production deployment
-  - `routes.py`: Route definitions and request handling
-  - Modular design following Flask best practices
+  - `portfolio_project/`: Django project configuration
+  - `portfolio/`: Main Django app with views and URLs
+  - `manage.py`: Django management script
+  - `main.py`: Production WSGI entry point
+  - Clean Django project structure following best practices
 
 ### Frontend Architecture
 - **Template System**: Jinja2 templates with inheritance
