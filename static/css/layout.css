@@ -112,6 +112,16 @@ p {
     font-family: var(--font-heading);
     font-size: var(--font-size-xl);
     font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--white);
 }
 
 .nav-link {
