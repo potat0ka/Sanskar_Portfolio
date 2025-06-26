@@ -81,17 +81,17 @@
     }
     
     .globe-container {
-        width: 300px;
+        width: 350px;
         height: 300px;
     }
     
     .nasa-earth-globe {
-        width: 300px;
+        width: 350px;
         height: 300px;
     }
     
     .webgl-earth-globe {
-        width: 300px;
+        width: 350px;
         height: 300px;
     }
     
@@ -186,17 +186,17 @@
     }
     
     .globe-container {
-        width: 250px;
+        width: 300px;
         height: 250px;
     }
     
     .nasa-earth-globe {
-        width: 250px;
+        width: 300px;
         height: 250px;
     }
     
     .webgl-earth-globe {
-        width: 250px;
+        width: 300px;
         height: 250px;
     }
     
@@ -339,18 +339,18 @@
     }
     
     .globe-container {
-        width: 200px;
-        height: 200px;
+        width: 280px;
+        height: 220px;
     }
     
     .nasa-earth-globe {
-        width: 200px;
-        height: 200px;
+        width: 280px;
+        height: 220px;
     }
     
     .webgl-earth-globe {
-        width: 200px;
-        height: 200px;
+        width: 280px;
+        height: 220px;
     }
     
     .section-title {
@@ -433,18 +433,18 @@
     }
     
     .globe-container {
-        width: 180px;
-        height: 180px;
+        width: 250px;
+        height: 200px;
     }
     
     .nasa-earth-globe {
-        width: 180px;
-        height: 180px;
+        width: 250px;
+        height: 200px;
     }
     
     .webgl-earth-globe {
-        width: 180px;
-        height: 180px;
+        width: 250px;
+        height: 200px;
     }
     
     .section-title {
@@ -497,18 +497,18 @@
     }
     
     .globe-container {
-        width: 150px;
-        height: 150px;
+        width: 220px;
+        height: 180px;
     }
     
     .nasa-earth-globe {
-        width: 150px;
-        height: 150px;
+        width: 220px;
+        height: 180px;
     }
     
     .webgl-earth-globe {
-        width: 150px;
-        height: 150px;
+        width: 220px;
+        height: 180px;
     }
     
     .scroll-indicator {
