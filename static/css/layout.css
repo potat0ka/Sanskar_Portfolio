@@ -202,6 +202,16 @@ p {
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
 }
 
+.nasa-earth-globe {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+    border: none;
+    background: transparent;
+}
+
 @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-20px) rotate(180deg); }

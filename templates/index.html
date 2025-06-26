@@ -34,7 +34,16 @@
                 <div class="col-lg-6">
                     <div class="hero-globe">
                         <div class="globe-container">
-                            <img src="{{ url_for('static', filename='assets/globe.svg') }}" alt="Earth Globe" class="animated-globe">
+                            <iframe 
+                                src="https://solarsystem.nasa.gov/gltf_embed/2393/"
+                                width="400" 
+                                height="400" 
+                                frameborder="0" 
+                                class="nasa-earth-globe"
+                                title="NASA 3D Earth Globe"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                 </div>

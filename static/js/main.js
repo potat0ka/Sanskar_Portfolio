@@ -126,35 +126,67 @@ function initSmoothScrolling() {
  */
 function initGlobeAnimation() {
     const globe = document.querySelector('.animated-globe');
+    const nasaGlobe = document.querySelector('.nasa-earth-globe');
     
-    if (!globe) return;
-    
-    // Add hover effect to globe
-    globe.addEventListener('mouseenter', function() {
-        this.style.animationPlayState = 'paused';
-        this.style.transform = 'scale(1.05) rotate(10deg)';
-        this.style.filter = 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4))';
-    });
-    
-    globe.addEventListener('mouseleave', function() {
-        this.style.animationPlayState = 'running';
-        this.style.transform = '';
-        this.style.filter = '';
-    });
-    
-    // Add click effect
-    globe.addEventListener('click', function() {
-        this.style.animation = 'none';
-        setTimeout(() => {
-            this.style.animation = '';
-        }, 100);
+    // Handle SVG globe if present
+    if (globe) {
+        // Add hover effect to globe
+        globe.addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+            this.style.transform = 'scale(1.05) rotate(10deg)';
+            this.style.filter = 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4))';
+        });
         
-        // Add a pulse effect
-        this.style.transform = 'scale(0.95)';
-        setTimeout(() => {
+        globe.addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
             this.style.transform = '';
-        }, 200);
-    });
+            this.style.filter = '';
+        });
+        
+        // Add click effect
+        globe.addEventListener('click', function() {
+            this.style.animation = 'none';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 100);
+            
+            // Add a pulse effect
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
+    }
+    
+    // Handle NASA globe iframe if present
+    if (nasaGlobe) {
+        const globeContainer = nasaGlobe.closest('.globe-container');
+        
+        if (globeContainer) {
+            // Add hover effect to container since iframe blocks direct interaction
+            globeContainer.addEventListener('mouseenter', function() {
+                nasaGlobe.style.animationPlayState = 'paused';
+                nasaGlobe.style.transform = 'scale(1.02)';
+                nasaGlobe.style.filter = 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5))';
+            });
+            
+            globeContainer.addEventListener('mouseleave', function() {
+                nasaGlobe.style.animationPlayState = 'running';
+                nasaGlobe.style.transform = '';
+                nasaGlobe.style.filter = 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4))';
+            });
+        }
+        
+        // Ensure iframe loads properly
+        nasaGlobe.addEventListener('load', function() {
+            console.log('NASA Earth globe loaded successfully');
+        });
+        
+        nasaGlobe.addEventListener('error', function() {
+            console.warn('NASA Earth globe failed to load, falling back to SVG');
+            // Could implement fallback to SVG here if needed
+        });
+    }
 }
 
 /**
