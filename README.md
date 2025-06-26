@@ -1,7 +1,5 @@
 # Sanskar Shrestha Travel Consultant Portfolio
 
-A professional Django-based portfolio website for Sanskar Shrestha, travel consultant at Harvest Moon Travels & Tours (P.) LTD. Features a stunning Three.js Earth globe animation and comprehensive travel services showcase.
-
 ## 🌟 Features
 
 - **Interactive 3D Earth Globe**: Slow-rotating realistic Earth globe using Three.js, centered on Kathmandu, Nepal
